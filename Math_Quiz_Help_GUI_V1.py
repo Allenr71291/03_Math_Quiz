@@ -108,7 +108,6 @@ class Start:
     def to_quiz(self, stakes):
         # Number checking function
         starting_balance = self.start_amount_entry.get()
-        # Game(self, stakes, starting_balance)
 
         error_back = "#ffafaf"
         has_errors = "no"
@@ -140,11 +139,44 @@ class Start:
             self.amount_error_label.config(text=error_feedback)
 
         else:
-            self.starting_funds.set(starting_balance)
 
-            starting_balance = self.starting_funds.get()
+            number_between = self.start_amount_entry1.get()
 
-            Quiz(self, stakes, starting_balance)
+            error_back = "#ffafaf"
+            has_errors = "no"
+
+            self.start_amount_entry.config(bg="white")
+            self.amount_error_label.config(text="")
+
+            try:
+                number_between = int(number_between)
+
+                if number_between <= 0:
+                    has_errors = "yes"
+                    error_feedback = "Sorry, the smallest amount of " \
+                                     "questions you can play with is 1"
+                elif number_between > 50:
+                    has_errors = "yes"
+                    error_feedback = "You cannot play with more than 50 " \
+                                     "Questions!"
+
+                elif number_between >= 1:
+                    self.numbers_used.set(number_between)
+
+            except ValueError:
+                has_errors = "yes"
+                error_feedback = "Please enter a whole number(no text / decimals)"
+
+            if has_errors == "yes":
+                self.start_amount_entry.config(bg=error_back)
+                self.amount_error_label.config(text=error_feedback)
+
+            # code for starting game:
+            #self.starting_funds.set(starting_balance)
+
+            #starting_balance = self.starting_funds.get()
+
+            #Quiz(self, stakes, starting_balance)
 
         # hide start up menu disabled for testing purposes
         # root.withdraw()
