@@ -13,8 +13,14 @@ class Start:
         self.help_frame = Frame(pady=10, padx=10)
         self.help_frame.grid()
 
-        self.starting_funds = IntVar()
-        self.starting_funds.set(0)
+        self.number_questions = IntVar()
+        self.number_questions.set(0)
+
+        self.numbers_used_low = IntVar()
+        self.numbers_used_low.set(0)
+
+        self.numbers_used_high = IntVar()
+        self.numbers_used_high.set(0)
 
         self.math_quiz_label = Label(self.start_frame,
                                           text="Math Quiz",
@@ -43,6 +49,7 @@ class Start:
                                        text="Set Amount of Questions")
         self.add_questions_button.grid(row=0, column=0)
 
+        # Number of questions
         self.start_amount_entry = Entry(self.question_frame,
                                         font="Arial 19 bold", width=10,)
         self.start_amount_entry.grid(row=0, column=1)
@@ -57,44 +64,46 @@ class Start:
                                        text="Use numbers between")
         self.numbers_between_button.grid(row=2, column=0)
 
-        self.start_amount_entry1 = Entry(self.entry_frame,
+        # Low number entry box
+        self.numbers_used_entry_low = Entry(self.entry_frame,
                                         font="Arial 19 bold", width=5)
-        self.start_amount_entry1.grid(row=2, column=1, padx=20)
+        self.numbers_used_entry_low.grid(row=2, column=1, padx=20)
 
         self.numbers_between_button = Label(self.entry_frame,
                                        font="Arial 15 bold",
                                        text="and")
         self.numbers_between_button.grid(row=2, column=2)
 
-        self.start_amount_entry2 = Entry(self.entry_frame,
+        # high number entry box
+        self.numbers_used_entry_high = Entry(self.entry_frame,
                                         font="Arial 19 bold", width=5)
-        self.start_amount_entry2.grid(row=2, column=3, padx=20)
+        self.numbers_used_entry_high.grid(row=2, column=3, padx=20)
 
         self.numbers_error_label = Label(self.question_frame, fg="maroon",
                                         text="", font="Arial 10 bold", wrap=275, justify=LEFT)
         self.numbers_error_label.grid(row=3, columnspan=2, pady=5)
 
         # button frame (row 3)
-        self.stakes_frame = Frame(self.start_frame)
-        self.stakes_frame.grid(row=4)
+        self.question_type_frame = Frame(self.start_frame)
+        self.question_type_frame.grid(row=4)
 
         # Buttons here:
         button_font = "Arial 12 bold"
 
-        # Orange low stakes button
-        self.multiplication_button = Button(self.stakes_frame, text="Multiplication",
+        # Orange low question_type button
+        self.multiplication_button = Button(self.question_type_frame, text="Multiplication",
                                        command=lambda: self.to_quiz("*"),
                                        font=button_font, bg="#1170ed")
         self.multiplication_button.grid(row=0, column=0, pady=10)
 
-        # Yellow Medium stakes button
-        self.subtraction_button = Button(self.stakes_frame, text="Subtraction",
+        # Yellow Medium question_type button
+        self.subtraction_button = Button(self.question_type_frame, text="Subtraction",
                                        command=lambda: self.to_quiz("-"),
                                        font=button_font, bg="#FFFF33")
         self.subtraction_button.grid(row=0, column=1, pady=10)
 
-        # Green High Stakes button
-        self.addition_button = Button(self.stakes_frame, text="Addition",
+        # Green High question_type button
+        self.addition_button = Button(self.question_type_frame, text="Addition",
                                        command=lambda: self.to_quiz("+"),
                                        font=button_font, bg="#99FF33")
         self.addition_button.grid(row=0, column=2, pady=10)
@@ -105,9 +114,10 @@ class Start:
                                        command=self.to_help)
         self.help_button.grid(row=1, column=1, pady=10)
 
-    def to_quiz(self, stakes):
+    def to_quiz(self, question_type):
         # Number checking function
-        starting_balance = self.start_amount_entry.get()
+        question_amount = self.start_amount_entry.get()
+
 
         error_back = "#ffafaf"
         has_errors = "no"
@@ -116,19 +126,19 @@ class Start:
         self.amount_error_label.config(text="")
 
         try:
-            starting_balance = int(starting_balance)
+            question_amount = int(question_amount)
 
-            if starting_balance <= 0:
+            if question_amount <= 0:
                 has_errors = "yes"
                 error_feedback = "Sorry, the smallest amount of " \
                                  "questions you can play with is 1"
-            elif starting_balance > 50:
+            elif question_amount > 50:
                 has_errors = "yes"
                 error_feedback = "You cannot play with more than 50 " \
                                  "Questions!"
 
-            elif starting_balance >= 1:
-                self.starting_funds.set(starting_balance)
+            elif question_amount >= 1:
+                self.number_questions.set(question_amount)
 
         except ValueError:
             has_errors = "yes"
@@ -140,7 +150,7 @@ class Start:
 
         else:
 
-            number_between = self.start_amount_entry1.get()
+            numbers_used_low = self.numbers_used_entry_low.get()
 
             error_back = "#ffafaf"
             has_errors = "no"
@@ -149,19 +159,19 @@ class Start:
             self.amount_error_label.config(text="")
 
             try:
-                number_between = int(number_between)
+                numbers_used_low = int(numbers_used_low)
 
-                if number_between <= 0:
+                if numbers_used_low <= 0:
                     has_errors = "yes"
                     error_feedback = "Sorry, the smallest amount of " \
                                      "questions you can play with is 1"
-                elif number_between > 50:
+                elif numbers_used_low > 50:
                     has_errors = "yes"
                     error_feedback = "You cannot play with more than 50 " \
                                      "Questions!"
 
-                elif number_between >= 1:
-                    self.numbers_used.set(number_between)
+                elif numbers_used_low >= 1:
+                    self.numbers_used_low.set(numbers_used_low)
 
             except ValueError:
                 has_errors = "yes"
@@ -171,12 +181,49 @@ class Start:
                 self.start_amount_entry.config(bg=error_back)
                 self.amount_error_label.config(text=error_feedback)
 
-            # code for starting game:
-            #self.starting_funds.set(starting_balance)
+            else:
 
-            #starting_balance = self.starting_funds.get()
+                numbers_used_high = self.numbers_used_entry_high.get()
 
-            #Quiz(self, stakes, starting_balance)
+                error_back = "#ffafaf"
+                has_errors = "no"
+
+                self.start_amount_entry.config(bg="white")
+                self.amount_error_label.config(text="")
+
+                try:
+                    numbers_used_high = int(numbers_used_high)
+
+                    if numbers_used_high <= 0:
+                        has_errors = "yes"
+                        error_feedback = "Sorry, the smallest amount of " \
+                                         "questions you can play with is 1"
+                    elif numbers_used_high > 50:
+                        has_errors = "yes"
+                        error_feedback = "You cannot play with more than 50 " \
+                                         "Questions!"
+
+                    elif numbers_used_high >= 1:
+                        self.numbers_used_high.set(numbers_used_high)
+
+                except ValueError:
+                    has_errors = "yes"
+                    error_feedback = "Please enter a whole number(no text / decimals)"
+
+                if has_errors == "yes":
+                    self.start_amount_entry.config(bg=error_back)
+                    self.amount_error_label.config(text=error_feedback)
+
+                else:
+
+                    # code for starting game:
+                    self.number_questions.set(question_amount)
+
+                    question_amount = self.number_questions.get()
+                    numbers_used_low = self.numbers_used_low.get()
+                    numbers_used_high = self.numbers_used_high.get()
+
+                    Quiz(self, question_type, question_amount, numbers_used_high, numbers_used_low)
 
         # hide start up menu disabled for testing purposes
         # root.withdraw()
@@ -186,9 +233,12 @@ class Start:
 
 
 class Quiz:
-    def __init__(self, partner, stakes, starting_balance):
-        print(stakes)
-        print(starting_balance)
+    def __init__(self, partner, question_type, question_amount, numbers_used_low,
+                 numbers_used_high):
+        print(question_type)
+        print(question_amount)
+        print(numbers_used_low)
+        print(numbers_used_high)
 
 
 class Help:
