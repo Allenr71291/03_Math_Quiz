@@ -90,19 +90,19 @@ class Start:
         # Buttons here:
         button_font = "Arial 12 bold"
 
-        # Orange low question_type button
+        # Orange Multiplication question_type button
         self.multiplication_button = Button(self.question_type_frame, text="Multiplication",
                                        command=lambda: self.to_quiz("*"),
                                        font=button_font, bg="#1170ed")
         self.multiplication_button.grid(row=0, column=0, pady=10)
 
-        # Yellow Medium question_type button
+        # Yellow Subtraction question_type button
         self.subtraction_button = Button(self.question_type_frame, text="Subtraction",
                                        command=lambda: self.to_quiz("-"),
                                        font=button_font, bg="#FFFF33")
         self.subtraction_button.grid(row=0, column=1, pady=10)
 
-        # Green High question_type button
+        # Green Addition question_type button
         self.addition_button = Button(self.question_type_frame, text="Addition",
                                        command=lambda: self.to_quiz("+"),
                                        font=button_font, bg="#99FF33")
@@ -117,7 +117,6 @@ class Start:
     def to_quiz(self, question_type):
         # Number checking function
         question_amount = self.start_amount_entry.get()
-
 
         error_back = "#ffafaf"
         has_errors = "no"
@@ -226,7 +225,7 @@ class Start:
                     Quiz(self, question_type, question_amount, numbers_used_high, numbers_used_low)
 
         # hide start up menu disabled for testing purposes
-        # root.withdraw()
+        root.withdraw()
 
     def to_help(self):
         get_help = Help(self)
@@ -240,12 +239,25 @@ class Quiz:
         print(numbers_used_low)
         print(numbers_used_high)
 
-        self.quiz_frame = Frame(pady=10, padx=10)
+        # GUI Setup
+        self.quiz_box = Toplevel()
+
+        # So user can quit with x in top corner
+        self.quiz_box.protocol('WM_DELETE_WINDOW', self.to_quit)
+
+        # Frame for main quiz functions
+        self.quiz_frame = Frame(self.quiz_box, pady=10, padx=10)
         self.quiz_frame.grid()
 
-        self.help_frame = Frame(pady=10, padx=10)
+        # Frame for help button
+        self.help_frame = Frame(self.quiz_box, pady=10, padx=10)
         self.help_frame.grid()
 
+        # Frame for the quit button
+        self.quit_frame = Frame(self.quiz_box, pady=10, padx=10)
+        self.quit_frame.grid()
+
+        # Top heading
         self.math_quiz_label = Label(self.quiz_frame,
                                           text="Math Quiz",
                                           font=("Arial", "19", "bold"),
@@ -257,12 +269,22 @@ class Quiz:
 
         # help button
         self.help_button = Button(self.help_frame, text="How to Play",
-                                       font=button_font, bg="#808080", fg="white",
+                                       bg="#808080", fg="white",
+                                       font="Arial 15 bold",
                                        command=self.to_help)
         self.help_button.grid(row=1, column=1, pady=10)
 
+        # Quit button
+        self.quit_button = Button(self.quit_frame, text="Quit", fg="white",
+                                  bg="#660000", font="Arial 15 bold",
+                                  command=self.to_quit, padx=10, pady=10)
+        self.quit_button.grid(row=6, pady=10)
+
     def to_help(self):
         get_help = Help(self)
+
+    def to_quit(self):
+        root.destroy()
 
 
 class Help:
