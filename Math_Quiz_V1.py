@@ -1,5 +1,6 @@
 from tkinter import *
 from functools import partial
+import random
 
 
 class Start:
@@ -90,7 +91,7 @@ class Start:
         # Buttons here:
         button_font = "Arial 12 bold"
 
-        # Orange Multiplication question_type button
+        # Blue Multiplication question_type button
         self.multiplication_button = Button(self.question_type_frame, text="Multiplication",
                                        command=lambda: self.to_quiz("*"),
                                        font=button_font, bg="#1170ed")
@@ -259,30 +260,84 @@ class Quiz:
 
         # Top heading
         self.math_quiz_label = Label(self.quiz_frame,
-                                          text="Math Quiz",
+                                          text="Play",
                                           font=("Arial", "19", "bold"),
                                           padx=10, pady=10)
         self.math_quiz_label.grid(row=0)
 
+        # Instructions for user
+        self.math_instructions = Label(self.quiz_frame, font="Arial 10 italic",
+                                       text="Please enter the answer of the"
+                                            "question below. Then click on "
+                                            "the submit button to continue "
+                                            "to the next question. ",
+                                            wrap=275, justify=LEFT,
+                                            padx=10, pady=10,)
+        self.math_instructions.grid(row=1)
+
+        # question number
+        self.question_number_label = Label(self.quiz_frame,
+                                          text="Question 3",
+                                          font=("Arial", "12", "bold"),
+                                          padx=10, pady=10)
+        self.question_number_label.grid(row=2)
+
+        self.questions_label = Label(self.quiz_frame,
+                                       font="Arial 15 bold",
+                                       text="Set Amount of Questions")
+        self.questions_label.grid(row=3, column=0)
+
+        # entry box for answers
+        self.question_answer_entry = Entry(self.quiz_frame,
+                                        font="Arial 19 bold", width=5)
+        self.question_answer_entry.grid(row=3, column=1, padx=15)
+
         # Buttons here:
         button_font = "Arial 12 bold"
+
+        # Orange Multiplication question_type button
+        self.multiplication_button = Button(self.quiz_frame, text="Submit",
+                                            command=lambda: self.to_questions,
+                                            font=button_font, bg="#4ee6ab")
+        self.multiplication_button.grid(row=4, column=0, pady=10)
 
         # help button
         self.help_button = Button(self.help_frame, text="How to Play",
                                        bg="#808080", fg="white",
                                        font="Arial 15 bold",
                                        command=self.to_help)
-        self.help_button.grid(row=1, column=1, pady=10)
+        self.help_button.grid(row=1, column=1, pady=5)
 
         # Quit button
         self.quit_button = Button(self.quit_frame, text="Quit", fg="white",
                                   bg="#660000", font="Arial 15 bold",
-                                  command=self.to_quit, padx=10, pady=10)
+                                  command=self.to_quit, padx=10, pady=5)
         self.quit_button.grid(row=6, pady=10)
 
+    def to_questions(self, question_amount):
+        question_amount = 5
+
+        numbers_used_low = 1
+        numbers_used_high = 8
+        operator = "*"
+        display_op = "×"
+
+        for item in range(0, question_amount):
+            # generate question
+            num_1 = random.randint(numbers_used_low, numbers_used_high)
+            num_2 = random.randint(numbers_used_low, numbers_used_high)
+
+            question = "{} {} {}".format(num_1, operator, num_2)
+            display_question = "{} {} {} = ".format(num_1, display_op, num_2)
+            answer = eval(question)
+
+            print("{} {}".format(display_question, answer))
+
+    # setting up for the help button
     def to_help(self):
         get_help = Help(self)
 
+    # so the quit button functions correctly
     def to_quit(self):
         root.destroy()
 
