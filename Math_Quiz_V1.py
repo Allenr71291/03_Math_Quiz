@@ -223,7 +223,7 @@ class Start:
                     numbers_used_low = self.numbers_used_low.get()
                     numbers_used_high = self.numbers_used_high.get()
 
-                    Quiz(self, question_type, question_amount, numbers_used_high, numbers_used_low)
+                    Quiz(self, question_type, question_amount, numbers_used_low, numbers_used_high)
 
         # hide start up menu disabled for testing purposes
         root.withdraw()
@@ -239,6 +239,9 @@ class Quiz:
         print(question_amount)
         print(numbers_used_low)
         print(numbers_used_high)
+
+        self.var_low = IntVar
+        self.var_low.set(numbers_used_low)
 
         # GUI Setup
         self.quiz_box = Toplevel()
@@ -277,14 +280,14 @@ class Quiz:
 
         # question number
         self.question_number_label = Label(self.quiz_frame,
-                                          text="Question 3",
+                                          text="Question #",
                                           font=("Arial", "12", "bold"),
                                           padx=10, pady=10)
         self.question_number_label.grid(row=2)
 
         self.questions_label = Label(self.quiz_frame,
                                        font="Arial 15 bold",
-                                       text="Set Amount of Questions")
+                                       text="Question goes here")
         self.questions_label.grid(row=3, column=0)
 
         # entry box for answers
@@ -296,10 +299,15 @@ class Quiz:
         button_font = "Arial 12 bold"
 
         # Orange Multiplication question_type button
-        self.multiplication_button = Button(self.quiz_frame, text="Submit",
-                                            command=lambda: self.to_questions,
+        self.submit_button = Button(self.quiz_frame, text="Submit",
+                                            command=lambda: self.check_answer(),
                                             font=button_font, bg="#4ee6ab")
-        self.multiplication_button.grid(row=4, column=0, pady=10)
+        self.submit_button.grid(row=4, column=0, pady=10)
+
+        self.next_button = Button(self.quiz_frame, text="Next",
+                                            command=lambda: self.next_question(question_amount),
+                                            font=button_font, bg="#4ee6ab")
+        self.next_button.grid(row=4, column=1, pady=10)
 
         # help button
         self.help_button = Button(self.help_frame, text="How to Play",
@@ -314,24 +322,15 @@ class Quiz:
                                   command=self.to_quit, padx=10, pady=5)
         self.quit_button.grid(row=6, pady=10)
 
-    def to_questions(self, question_amount):
-        question_amount = 5
+    def next_question(self, question_amount):
 
-        numbers_used_low = 1
-        numbers_used_high = 8
-        operator = "*"
-        display_op = "×"
+        low_num = self.var_low.get()
+        print(low_num)
 
-        for item in range(0, question_amount):
-            # generate question
-            num_1 = random.randint(numbers_used_low, numbers_used_high)
-            num_2 = random.randint(numbers_used_low, numbers_used_high)
+    def check_answer(self):
 
-            question = "{} {} {}".format(num_1, operator, num_2)
-            display_question = "{} {} {} = ".format(num_1, display_op, num_2)
-            answer = eval(question)
-
-            print("{} {}".format(display_question, answer))
+        user_answer = self.question_answer_entry.get()
+        print(user_answer)
 
     # setting up for the help button
     def to_help(self):
