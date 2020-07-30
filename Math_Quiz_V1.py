@@ -240,8 +240,14 @@ class Quiz:
         print(numbers_used_low)
         print(numbers_used_high)
 
-        self.var_low = IntVar
+        self.var_low = IntVar()
         self.var_low.set(numbers_used_low)
+
+        self.var_high = IntVar()
+        self.var_high.set(numbers_used_high)
+
+        self.var_correct_ans = IntVar()
+        self.var_correct_ans.set(0)
 
         # GUI Setup
         self.quiz_box = Toplevel()
@@ -270,10 +276,10 @@ class Quiz:
 
         # Instructions for user
         self.math_instructions = Label(self.quiz_frame, font="Arial 10 italic",
-                                       text="Please enter the answer of the"
-                                            "question below. Then click on "
-                                            "the submit button to continue "
-                                            "to the next question. ",
+                                       text="Please click on the Next button "
+                                            "to continue. Then click on "
+                                            "the submit button to check you're "
+                                            "answer.  ",
                                             wrap=275, justify=LEFT,
                                             padx=10, pady=10,)
         self.math_instructions.grid(row=1)
@@ -287,13 +293,18 @@ class Quiz:
 
         self.questions_label = Label(self.quiz_frame,
                                        font="Arial 15 bold",
-                                       text="Question goes here")
-        self.questions_label.grid(row=3, column=0)
+                                       text="question")
+        self.questions_label.grid(row=4, column=0)
 
         # entry box for answers
         self.question_answer_entry = Entry(self.quiz_frame,
                                         font="Arial 19 bold", width=5)
-        self.question_answer_entry.grid(row=3, column=1, padx=15)
+        self.question_answer_entry.grid(row=4, column=1, padx=15)
+
+        self.amount_error_label = Label(self.quiz_frame, fg="maroon",
+                                        text="", font="Arial 10 bold", wrap=275,
+                                        justify=LEFT)
+        self.amount_error_label.grid(row=3, columnspan=2, pady=5)
 
         # Buttons here:
         button_font = "Arial 12 bold"
@@ -302,12 +313,12 @@ class Quiz:
         self.submit_button = Button(self.quiz_frame, text="Submit",
                                             command=lambda: self.check_answer(),
                                             font=button_font, bg="#4ee6ab")
-        self.submit_button.grid(row=4, column=0, pady=10)
+        self.submit_button.grid(row=5, column=1, pady=10)
 
         self.next_button = Button(self.quiz_frame, text="Next",
                                             command=lambda: self.next_question(question_amount),
                                             font=button_font, bg="#4ee6ab")
-        self.next_button.grid(row=4, column=1, pady=10)
+        self.next_button.grid(row=5, column=0, pady=10)
 
         # help button
         self.help_button = Button(self.help_frame, text="How to Play",
@@ -320,17 +331,67 @@ class Quiz:
         self.quit_button = Button(self.quit_frame, text="Quit", fg="white",
                                   bg="#660000", font="Arial 15 bold",
                                   command=self.to_quit, padx=10, pady=5)
-        self.quit_button.grid(row=6, pady=10)
+        self.quit_button.grid(row=7, pady=10)
 
     def next_question(self, question_amount):
 
         low_num = self.var_low.get()
-        print(low_num)
+        high_num = self.var_high.get()
+
+        num_1 = random.randint(low_num, high_num)
+        num_2 = random.randint(low_num, high_num)
+
+        operator = "*"
+        display_op = "×"
+
+        question = "{} {} {}".format(num_1, operator, num_2)
+
+        display_question = "{} {} {} = ".format(num_1, display_op, num_2)
+        self.questions_label.config(text=display_question)
+
+        answer = eval(question)
+        self.var_correct_ans.set(answer)
+
+        print("{} {}".format(display_question, answer))
 
     def check_answer(self):
 
+        self.next_button.config(state=DISABLED)
+
+        error_back = "#ffafaf"
+
+        self.amount_error_label.config(text="")
+        self.question_answer_entry.config(bg="white")
+
+        actual_answer = self.var_correct_ans.get()
         user_answer = self.question_answer_entry.get()
-        print(user_answer)
+
+        try:
+
+            user_answer = int(user_answer)
+
+            if user_answer != actual_answer:
+                    answer_correct = "yes"
+                    error_feedback = "Sorry that is the incorrect " \
+                                 "answer! try again and click submit."
+
+            elif user_answer == "":
+                answer_correct = "yes"
+                error_feedback = "You're answer cannot be " \
+                                 "blank! try again and click submit."
+            else:
+                answer_correct = "no"
+                error_feedback = "Well Done that is the " \
+                                 "correct answer! Click next to " \
+                                 "continue"
+                self.next_button.config(state=NORMAL)
+
+        except ValueError:
+            error_feedback = "Please enter a whole number (no text / decimals)"
+
+        if answer_correct == "yes":
+            self.question_answer_entry.config(bg=error_back)
+            self.amount_error_label.config(text=error_feedback)
 
     # setting up for the help button
     def to_help(self):
