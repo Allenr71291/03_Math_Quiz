@@ -1,6 +1,5 @@
 from tkinter import *
 from functools import partial
-import random
 
 
 class Start:
@@ -91,19 +90,19 @@ class Start:
         # Buttons here:
         button_font = "Arial 12 bold"
 
-        # Blue Multiplication question_type button
+        # Orange low question_type button
         self.multiplication_button = Button(self.question_type_frame, text="Multiplication",
                                        command=lambda: self.to_quiz("*"),
                                        font=button_font, bg="#1170ed")
         self.multiplication_button.grid(row=0, column=0, pady=10)
 
-        # Yellow Subtraction question_type button
+        # Yellow Medium question_type button
         self.subtraction_button = Button(self.question_type_frame, text="Subtraction",
                                        command=lambda: self.to_quiz("-"),
                                        font=button_font, bg="#FFFF33")
         self.subtraction_button.grid(row=0, column=1, pady=10)
 
-        # Green Addition question_type button
+        # Green High question_type button
         self.addition_button = Button(self.question_type_frame, text="Addition",
                                        command=lambda: self.to_quiz("+"),
                                        font=button_font, bg="#99FF33")
@@ -118,6 +117,7 @@ class Start:
     def to_quiz(self, question_type):
         # Number checking function
         question_amount = self.start_amount_entry.get()
+
 
         error_back = "#ffafaf"
         has_errors = "no"
@@ -200,15 +200,11 @@ class Start:
                                          "questions you can play with is 1"
                     elif numbers_used_high > 50:
                         has_errors = "yes"
-                        error_feedback = "You cannot use numbers over 50! "
+                        error_feedback = "You cannot play with more than 50 " \
+                                         "Questions!"
 
                     elif numbers_used_high >= 1:
                         self.numbers_used_high.set(numbers_used_high)
-
-                    elif numbers_used_high <= numbers_used_low:
-                        has_errors = "yes"
-                        error_feedback = " Your right hand number cannot be " \
-                                         "larger than your left hand number!"
 
                 except ValueError:
                     has_errors = "yes"
@@ -227,11 +223,10 @@ class Start:
                     numbers_used_low = self.numbers_used_low.get()
                     numbers_used_high = self.numbers_used_high.get()
 
-                    Quiz(self, question_type, question_amount, numbers_used_low, numbers_used_high)
+                    Quiz(self, question_type, question_amount, numbers_used_high, numbers_used_low)
 
-                    # hide start up menu
-                    root.withdraw()
-
+        # hide start up menu disabled for testing purposes
+        # root.withdraw()
 
     def to_help(self):
         get_help = Help(self)
@@ -240,193 +235,165 @@ class Start:
 class Quiz:
     def __init__(self, partner, question_type, question_amount, numbers_used_low,
                  numbers_used_high):
+
         print(question_type)
         print(question_amount)
         print(numbers_used_low)
         print(numbers_used_high)
+        self.balance = IntVar()
 
-        # importing numbers inputed by the user for generating questions
-        self.var_low = IntVar()
-        self.var_low.set(numbers_used_low)
+        self.balance.set(starting_balance)
 
-        self.var_high = IntVar()
-        self.var_high.set(numbers_used_high)
-
-        # Importing the correct answer
-        self.var_correct_ans = IntVar()
-        self.var_correct_ans.set(0)
-
-        self.var_operation = StringVar()
-        self.var_operation.set(question_type)
+        self.multiplier = IntVar()
+        self.multiplier.set(stakes)
 
         # GUI Setup
-        self.quiz_box = Toplevel()
+        self.game_box = Toplevel()
 
-        # So user can quit with x in top corner
-        self.quiz_box.protocol('WM_DELETE_WINDOW', self.to_quit)
+        # If user cross at top, game quits
+        self.game_box.protocol('WM_DELETE_WINDOW', self.to_quit)
 
-        # Frame for main quiz functions
-        self.quiz_frame = Frame(self.quiz_box, pady=10, padx=10)
-        self.quiz_frame.grid()
+        self.game_frame = Frame(self.game_box)
+        self.game_frame.grid()
 
-        # Frame for help button
-        self.help_frame = Frame(self.quiz_box, pady=10, padx=10)
-        self.help_frame.grid()
+        # Heading Row
+        self.heading_label = Label(self.game_frame, text="Play...",
+                                   font="Arial 24 bold", padx=10,
+                                   pady=10)
+        self.heading_label.grid(row=0)
 
-        # Frame for the quit button
-        self.quit_frame = Frame(self.quiz_box, pady=10, padx=10)
-        self.quit_frame.grid()
+        # Instructions Label
+        self.instructions_label = Label(self.game_frame, wrap=300, justify=LEFT,
+                                        text="Press <enter> or click the 'Open "
+                                        "Boxes' button to reveal the "
+                                        "contents of the mystery boxes.",
+                                        font="Arial 10", padx=10, pady=10)
+        self.instructions_label.grid(row=1)
 
-        # Top heading
-        self.math_quiz_label = Label(self.quiz_frame,
-                                          text="Play",
-                                          font=("Arial", "19", "bold"),
-                                          padx=10, pady=10)
-        self.math_quiz_label.grid(row=0)
+        # Boxes go here (row 2)
+        box_text = "Arial 16 bold"
+        box_back = "#b9ea96" # light green
+        box_width = 5
+        self.box_frame = Frame(self.game_frame)
+        self.box_frame.grid(row=2, pady=10)
 
-        # Instructions for user
-        self.math_instructions = Label(self.quiz_frame, font="Arial 10 italic",
-                                       text="Please click on the Next button "
-                                            "to continue. Then click on "
-                                            "the submit button to check you're "
-                                            "answer.  ",
-                                            wrap=275, justify=LEFT,
-                                            padx=10, pady=10,)
-        self.math_instructions.grid(row=1)
+        self.prize1_label = Label(self.box_frame, text="?\n", font=box_text,
+                                  bg=box_back, width=box_width, padx=10, pady=10)
+        self.prize1_label.grid(row=0, column=0)
 
-        # question number
-        self.question_number_label = Label(self.quiz_frame,
-                                          text="Question #",
-                                          font=("Arial", "12", "bold"),
-                                          padx=10, pady=10)
-        self.question_number_label.grid(row=2)
+        self.prize2_label = Label(self.box_frame, text="?\n", font=box_text,
+                                  bg=box_back, width=box_width, padx=10, pady=10)
+        self.prize2_label.grid(row=0, column=1, padx=10)
 
-        # used to display the questions
-        self.questions_label = Label(self.quiz_frame,
-                                       font="Arial 15 bold",
-                                       text="question")
-        self.questions_label.grid(row=4, column=0)
+        self.prize3_label = Label(self.box_frame, text="?\n", font=box_text,
+                                  bg=box_back, width=box_width, padx=10, pady=10)
+        self.prize3_label.grid(row=0, column=2)
 
-        # entry box for answers
-        self.question_answer_entry = Entry(self.quiz_frame,
-                                        font="Arial 19 bold", width=5)
-        self.question_answer_entry.grid(row=4, column=1, padx=15)
+        # Play button goes here (row 3)
+        self.play_button = Button(self.game_frame, text="Open Boxes",
+                                  bg="#FFF333", font="Arial 15 bold", width=20,
+                                  padx=10, pady=10, command=self.reveal_boxes)
+        self.play_button.grid(row=3)
 
-        # space where the errors are displayed
-        self.amount_error_label = Label(self.quiz_frame, fg="maroon",
-                                        text="", font="Arial 10 bold", wrap=275,
-                                        justify=LEFT)
-        self.amount_error_label.grid(row=3, columnspan=2, pady=5)
+        self.play_button.focus()
+        self.play_button.bind('<Return>', lambda e: self.reveal_boxes())
+        self.play_button.grid(row=3)
 
-        # Buttons here:
-        button_font = "Arial 12 bold"
+        # Balance Label (row 4)
 
-        # Submit answer button
-        self.submit_button = Button(self.quiz_frame, text="Submit",
-                                            command=lambda: self.check_answer(),
-                                            font=button_font, bg="#4ee6ab")
-        self.submit_button.grid(row=5, column=1, pady=10)
+        start_text = "Game Cost: ${} \n "" \nHow Much " \
+                     "will you win?".format(stakes * 5)
 
-        # next question button
-        self.next_button = Button(self.quiz_frame, text="Next",
-                                            command=lambda: self.next_question(question_amount),
-                                            font=button_font, bg="#4ee6ab")
-        self.next_button.grid(row=5, column=0, pady=10)
+        self.balance_label = Label(self.game_frame, font="Arial 12 bold", fg="green",
+                                   text=start_text, wrap=300,
+                                   justify=LEFT)
+        self.balance_label.grid(row=4, pady=10)
 
-        # help button
-        self.help_button = Button(self.help_frame, text="How to Play",
-                                       bg="#808080", fg="white",
-                                       font="Arial 15 bold",
-                                       command=self.to_help)
-        self.help_button.grid(row=1, column=1, pady=5)
+        # Help and Game Stats button (row 5)
+        self.help_export_frame = Frame(self.game_frame)
+        self.help_export_frame.grid(row=5, pady=10)
+
+        self.help_button = Button(self.help_export_frame, text="Help / Rules",
+                                  font="Arial 15 bold",
+                                  bg="#808080", fg="white")
+        self.help_button.grid(row=0, column=0, padx=2)
+
+        self.stats_button = Button(self.help_export_frame, text="Game Stats....",
+                                   font="Arial 15 bold",
+                                   bg="#003366", fg="white")
+        self.stats_button.grid(row=0, column=1, padx=2)
 
         # Quit button
-        self.quit_button = Button(self.quit_frame, text="Quit", fg="white",
-                                  bg="#660000", font="Arial 15 bold",
-                                  command=self.to_quit, padx=10, pady=5)
-        self.quit_button.grid(row=7, pady=10)
+        self.quit_button = Button(self.game_frame, text="Quit", fg="white",
+                                  bg="#660000", font="Arial 15 bold", width=20,
+                                  command=self.to_quit, padx=10, pady=10)
+        self.quit_button.grid(row=6, pady=10)
 
-        # ensuring the user cannot click submit with no question
-        self.submit_button.config(state=DISABLED)
+    def reveal_boxes(self):
 
-    def next_question(self, question_amount):
+        current_balance = self.balance.get()
+        stakes_multiplier = self.multiplier.get()
 
-        self.next_button.config(state=DISABLED)
+        round_winnings = 0
+        prizes = []
+        backgrounds = []
+        for thing in range(0, 3):
+            prize_num = random.randint(1, 100)
 
-        # reactivating the submit answer button
-        self.submit_button.config(state=NORMAL)
-
-        low_num = self.var_low.get()
-        high_num = self.var_high.get()
-
-        num_1 = random.randint(low_num, high_num)
-        num_2 = random.randint(low_num, high_num)
-
-        operator = self.var_operation.get()
-
-        if operator == "*":
-            display_op = "×"
-        else:
-            display_op = operator
-
-        question = "{} {} {}".format(num_1, operator, num_2)
-
-        display_question = "{} {} {} = ".format(num_1, display_op, num_2)
-        self.questions_label.config(text=display_question)
-
-        answer = eval(question)
-        self.var_correct_ans.set(answer)
-
-        print("{} {}".format(display_question, answer))
-
-    def check_answer(self):
-
-        # disabling the next question button until user has correct answer.
-        self.next_button.config(state=DISABLED)
-
-        answer_wrong = "#ffafaf"
-        answer_right = "#00FF44"
-
-        self.amount_error_label.config(text="")
-        self.question_answer_entry.config(bg="white")
-
-        actual_answer = self.var_correct_ans.get()
-        user_answer = self.question_answer_entry.get()
-
-        try:
-
-            user_answer = int(user_answer)
-
-            if user_answer != actual_answer:
-                answer_correct = "no"
-                answer_check = "Sorry that is the incorrect " \
-                                 "answer! try again and click submit."
-
-            elif user_answer == "":
-                answer_correct = "no"
-                answer_check = "You're answer cannot be " \
-                                 "blank! try again and click submit."
+            if 0 < prize_num <= 5:
+                prize = "gold\n(${})".format(5* stakes_multiplier)
+                back_color = "#CEA935"  # gold colour
+                round_winnings += 5 * stakes_multiplier
+            elif 1 < prize_num <= 25:
+                prize = "silver\n(${})".format(2 * stakes_multiplier)
+                back_color = "#B7B7B5"  # silver colour
+                round_winnings += 2 * stakes_multiplier
+            elif 3 < prize_num <= 65:
+                prize = "copper\n(${})".format(1 * stakes_multiplier)
+                back_color = "#BC7F61"  # copper colour
+                round_winnings += 1 * stakes_multiplier
             else:
-                answer_correct = "yes"
-                answer_check = "Well Done that is the " \
-                                 "correct answer! Click next to " \
-                                 "continue"
-                self.next_button.config(state=NORMAL)
-                self.submit_button.config(state=DISABLED)
+                prize = "lead\n($0)"
+                back_color = "#595E71"  # lead colour
 
-                self.question_answer_entry.config(bg=answer_right)
+            prizes.append(prize)
+            backgrounds.append(back_color)
 
-        except ValueError:
-            answer_check= "Please enter a whole number (no text / decimals)"
+        # Display prizes...
+        self.prize1_label.config(text=prizes[0], bg=backgrounds[0])
 
-            self.question_answer_entry.config(bg=answer_wrong)
-        self.amount_error_label.config(text=answer_check)
+        self.prize2_label.config(text=prizes[1], bg=backgrounds[1])
 
-    # setting up for the help button
-    def to_help(self):
-        get_help = Help(self)
+        self.prize3_label.config(text=prizes[2], bg=backgrounds[2])
 
-    # so the quit button functions correctly
+        # Deduct cost of game
+        current_balance -= 5 * stakes_multiplier
+
+        # Add Winnings
+        current_balance += round_winnings
+
+        # Set balance to new balance
+        self.balance.set(current_balance)
+
+        balance_statement = "Game Cost: ${}\nPayback: ${} \n" \
+                            "Current Balance: ${}".format(5 * stakes_multiplier,
+                                                          round_winnings,
+                                                          current_balance)
+
+        # Edit label so user can see their balance
+        self.balance_label.configure(text=balance_statement)
+
+        if current_balance < 5 * stakes_multiplier:
+            self.play_button.config(state=DISABLED)
+            self.game_box.focus()
+            self.play_button.config(text="Game Over")
+
+            balance_statement = "Current Balance: ${}\n" \
+                                "Your balance is too low. You can only quit " \
+                                "or view your stats. Sorry about that.".format(current_balance)
+            self.balance_label.config(fg="#660000", font="Arial 10 bold",
+                                      text=balance_statement)
+
     def to_quit(self):
         root.destroy()
 
@@ -465,6 +432,7 @@ class Help:
     def close_help(self, partner):
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
+
 
 # main routine
 if __name__ == "__main__":
