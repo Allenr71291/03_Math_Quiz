@@ -236,7 +236,6 @@ class Start:
     def to_help(self):
         get_help = Help(self)
 
-
 class Quiz:
     def __init__(self, partner, question_type, question_amount, numbers_used_low,
                  numbers_used_high):
@@ -286,7 +285,7 @@ class Quiz:
 
         # Instructions for user
         self.math_instructions = Label(self.quiz_frame, font="Arial 10 italic",
-                                       text="Please click on the Next button "
+                                       text="Click on the Next button "
                                             "to continue. Then click on "
                                             "the submit button to check you're "
                                             "answer.  ",
@@ -338,13 +337,20 @@ class Quiz:
                                        bg="#808080", fg="white",
                                        font="Arial 15 bold",
                                        command=self.to_help)
-        self.help_button.grid(row=1, column=1, pady=5)
+        self.help_button.grid(row=1, column=0, pady=5)
+
+        # help button
+        self.stats_btn = Button(self.help_frame, text="Export",
+                                       bg="#0033FF", fg="white",
+                                       font="Arial 15 bold",
+                                       command=self.to_stats)
+        self.stats_btn.grid(row=1, column=1, pady=5)
 
         # Quit button
         self.quit_button = Button(self.quit_frame, text="Quit", fg="white",
                                   bg="#660000", font="Arial 15 bold",
                                   command=self.to_quit, padx=10, pady=5)
-        self.quit_button.grid(row=7, pady=10)
+        self.quit_button.grid(row=7, pady=10, column=1)
 
         # ensuring the user cannot click submit with no question
         self.submit_button.config(state=DISABLED)
@@ -400,7 +406,7 @@ class Quiz:
             if user_answer != actual_answer:
                 answer_correct = "no"
                 answer_check = "Sorry that is the incorrect " \
-                                 "answer! try again and click submit."
+                               "answer! try again and click submit."
 
             elif user_answer == "":
                 answer_correct = "no"
@@ -429,6 +435,9 @@ class Quiz:
     # so the quit button functions correctly
     def to_quit(self):
         root.destroy()
+
+    def to_stats(self):
+        print("stats !....")
 
 
 class Help:
