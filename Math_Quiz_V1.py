@@ -236,6 +236,7 @@ class Start:
     def to_help(self):
         get_help = Help(self)
 
+
 class Quiz:
     def __init__(self, partner, question_type, question_amount, numbers_used_low,
                  numbers_used_high):
@@ -254,6 +255,10 @@ class Quiz:
         # Importing the correct answer
         self.var_correct_ans = IntVar()
         self.var_correct_ans.set(0)
+
+        # Importing the correct answer
+        self.var_ques_number = IntVar()
+        self.var_ques_number.set(0)
 
         self.var_operation = StringVar()
         self.var_operation.set(question_type)
@@ -294,8 +299,9 @@ class Quiz:
         self.math_instructions.grid(row=1)
 
         # question number
+
         self.question_number_label = Label(self.quiz_frame,
-                                          text="Question #",
+                                          text="Question 1",
                                           font=("Arial", "12", "bold"),
                                           padx=10, pady=10)
         self.question_number_label.grid(row=2)
@@ -340,7 +346,7 @@ class Quiz:
         self.help_button.grid(row=1, column=0, pady=5)
 
         # help button
-        self.stats_btn = Button(self.help_frame, text="Export",
+        self.stats_btn = Button(self.help_frame, text="Stats",
                                        bg="#0033FF", fg="white",
                                        font="Arial 15 bold",
                                        command=self.to_stats)
@@ -406,17 +412,19 @@ class Quiz:
             if user_answer != actual_answer:
                 answer_correct = "no"
                 answer_check = "Sorry that is the incorrect " \
-                               "answer! try again and click submit."
+                               "answer! Click next to continue"
+                self.next_button.config(state=NORMAL)
+                self.submit_button.config(state=DISABLED)
 
             elif user_answer == "":
                 answer_correct = "no"
                 answer_check = "You're answer cannot be " \
-                                 "blank! try again and click submit."
+                               "blank! try again and click submit"
             else:
                 answer_correct = "yes"
                 answer_check = "Well Done that is the " \
-                                 "correct answer! Click next to " \
-                                 "continue"
+                               "correct answer! Click next to " \
+                               "continue"
                 self.next_button.config(state=NORMAL)
                 self.submit_button.config(state=DISABLED)
 
@@ -436,8 +444,49 @@ class Quiz:
     def to_quit(self):
         root.destroy()
 
+    # Going to the stats function
     def to_stats(self):
-        print("stats !....")
+        QuizStats()
+
+
+class QuizStats:
+    def __init__(self, partner):
+
+        heading = " Arial 12 bold"
+        content = "Arial 12"
+
+        self.quiz_stats_box = Toplevel()
+
+        # If users press cross at top, closes help and 'releases' help button
+
+        self.quiz_stats_box.protocol('WM_DELETE_WINDOW', partial(self.close_stats,
+                                                                 partner))
+
+        self.stats_frame = Frame(self.quiz_stats_box)
+        self.stats_frame.grid()
+
+        # Set up help heading (row 0)
+        self.stats_heading = Label(self.stats_frame, text="Quiz Statistics",
+                                   font="arial 19 bold")
+        self.stats_heading.grid(row=0)
+
+        self.export_instructions = Label(self.stats_frame,
+                                         text="Here are your Game Statistics."
+                                              "Please use the Export button to "
+                                              "access the results of each "
+                                              "round that you played", wrap=250,
+                                         font="arial 10 italic",
+                                         justify=LEFT, fg="green",
+                                         padx=10, pady=10)
+        self.export_instructions.grid(row=1)
+
+        # Frame for the Stats (Row 2)
+        self.details_frame = Frame(self.stats_frame)
+        self.details_frame.grid(row=2)
+
+    def close_stats(self, partner):
+        partner.stats_button.config(state=NORMAL)
+        self.quiz_stats_box.destroy()
 
 
 class Help:
