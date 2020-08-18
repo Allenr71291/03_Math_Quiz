@@ -1,6 +1,5 @@
 import random
 
-NUM_QUES = 5
 
 numbers_used_low = 1
 numbers_used_high = 8

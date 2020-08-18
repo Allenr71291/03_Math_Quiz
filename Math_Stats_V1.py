@@ -1,6 +1,7 @@
 from tkinter import *
 from functools import partial
 import random
+import tkinter as tk
 
 
 class Start:
@@ -163,12 +164,12 @@ class Start:
 
                 if numbers_used_low <= 0:
                     has_errors = "yes"
-                    error_feedback = "Sorry, the smallest amount of " \
-                                     "questions you can play with is 1"
+                    error_feedback = "Sorry, the smallest number you " \
+                                     "can play with is 1"
                 elif numbers_used_low > 50:
                     has_errors = "yes"
-                    error_feedback = "You cannot play with more than 50 " \
-                                     "Questions!"
+                    error_feedback = "You cannot play with numbers " \
+                                     "over 50!"
 
                 elif numbers_used_low >= 1:
                     self.numbers_used_low.set(numbers_used_low)
@@ -240,10 +241,8 @@ class Start:
 class Quiz:
     def __init__(self, partner, question_type, question_amount, numbers_used_low,
                  numbers_used_high):
-        print(question_type)
-        print(question_amount)
-        print(numbers_used_low)
-        print(numbers_used_high)
+
+        self.quiz_results_list = []
 
         # importing numbers inputed by the user for generating questions
         self.var_low = IntVar()
@@ -254,6 +253,8 @@ class Quiz:
 
         self.var_question_number = IntVar()
         self.var_question_number.set(question_amount)
+
+        self.score = IntVar()
 
         # Importing the correct answer
         self.var_correct_ans = IntVar()
@@ -312,11 +313,11 @@ class Quiz:
         # used to display the questions
         self.questions_label = Label(self.quiz_frame,
                                        font="Arial 15 bold",
-                                       text="question")
+                                       text="")
         self.questions_label.grid(row=4, column=0)
 
         # entry box for answers
-        self.question_answer_entry = Entry(self.quiz_frame,
+        self.question_answer_entry = Entry(self.quiz_frame, text="",
                                         font="Arial 19 bold", width=5)
         self.question_answer_entry.grid(row=4, column=1, padx=15)
 
@@ -349,10 +350,10 @@ class Quiz:
         self.help_button.grid(row=1, column=0, pady=5)
 
         # help button
-        self.stats_btn = Button(self.help_frame, text="Stats",
-                                       bg="#0033FF", fg="white",
-                                       font="Arial 15 bold",
-                                       command=self.to_stats)
+        self.stats_btn = Button(self.help_frame, text="Quiz Results...",
+                                   font="Arial 15 bold",
+                                   command=lambda: self.to_stats(self.round_results_list, self.quiz_results_list),
+                                   bg="#003366", fg="white")
         self.stats_btn.grid(row=1, column=1, pady=5)
 
         # Quit button
@@ -365,6 +366,11 @@ class Quiz:
         self.submit_button.config(state=DISABLED)
 
     def next_question(self, question_amount):
+        # color for when box is cleared (white)
+        box_clear = "#ffffff"
+
+        self.question_answer_entry.config(bg=box_clear)
+        self.question_answer_entry.delete(0, 'end')
 
         self.next_button.config(state=DISABLED)
         var_new_question_num = self.var_ques_number.get()
@@ -400,7 +406,7 @@ class Quiz:
         answer = eval(question)
         self.var_correct_ans.set(answer)
 
-        # print question for testing
+         # print question for testing
         # print("{} {}".format(display_question, answer))
 
     def check_answer(self, question_amount):
@@ -408,12 +414,18 @@ class Quiz:
         # disabling the next question button until user has correct answer.
         self.next_button.config(state=DISABLED)
 
+        score = self.score.get()
+
         var_new_question_num = self.var_ques_number.get()
 
         question_num = self.var_question_number.get()
 
-        answer_wrong = "#ffafaf"
-        answer_right = "#00FF44"
+        # dark red for incorrect answer
+        answer_wrong = "#F96977"
+        # Answer wrong darker text color
+        answer_wrong_text = "#A50E1D"
+        # dark Green for correct answer
+        answer_right = "#18A518"
 
         self.amount_error_label.config(text="")
         self.question_answer_entry.config(bg="white")
@@ -431,11 +443,18 @@ class Quiz:
                                "answer! Click next to continue"
                 self.next_button.config(state=NORMAL)
                 self.submit_button.config(state=DISABLED)
+                self.question_answer_entry.config(bg=answer_wrong)
+                self.amount_error_label.config(fg=answer_wrong_text)
+                round_results = "Incorrect | You entered:{} | The Correct Answer is:{} | Score:{} \n".format\
+                    (user_answer, actual_answer ,score)
 
             elif user_answer == "":
                 answer_correct = "no"
                 answer_check = "You're answer cannot be " \
                                "blank! try again and click submit"
+                self.question_answer_entry.config(bg=answer_wrong)
+                self.amount_error_label.config(fg=answer_wrong_text)
+
             else:
                 answer_correct = "yes"
                 answer_check = "Well Done that is the " \
@@ -443,8 +462,11 @@ class Quiz:
                                "continue"
                 self.next_button.config(state=NORMAL)
                 self.submit_button.config(state=DISABLED)
-
+                self.amount_error_label.config(fg=answer_right)
                 self.question_answer_entry.config(bg=answer_right)
+                round_results = "Correct | You entered:{} | Score:{}\n".format(user_answer, score)
+                score = score + 1
+                self.round_results_list.append(round_results)
 
         except ValueError:
             answer_check= "Please enter a whole number (no text / decimals)"
@@ -458,6 +480,9 @@ class Quiz:
                                                 " on the stats button to review.")
             self.next_button.config(state=DISABLED)
             self.submit_button.config(state=DISABLED)
+        self.score.set(score)
+        self.quiz_results_list[0] = score
+        # selected_questions = self.quiz_results_list[1]
 
     # setting up for the help button
     def to_help(self):
@@ -469,7 +494,7 @@ class Quiz:
 
     # Going to the stats function
     def to_stats(self):
-        QuizStats()
+        QuizStats(self)
 
 
 class QuizStats:
