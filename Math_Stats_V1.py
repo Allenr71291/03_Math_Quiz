@@ -24,6 +24,9 @@ class Start:
         self.numbers_used_high = IntVar()
         self.numbers_used_high.set(0)
 
+        self.question_amount = IntVar()
+        self.question_amount.set(0)
+
         self.math_quiz_label = Label(self.start_frame,
                                           text="Math Quiz",
                                           font=("Arial", "19", "bold"),
@@ -243,6 +246,8 @@ class Quiz:
                  numbers_used_high):
 
         self.quiz_results_list = []
+        self.round_results_list = []
+
 
         # importing numbers inputed by the user for generating questions
         self.var_low = IntVar()
@@ -253,6 +258,9 @@ class Quiz:
 
         self.var_question_number = IntVar()
         self.var_question_number.set(question_amount)
+
+        self.var_question = StringVar()
+        self.var_question.set('')
 
         self.score = IntVar()
 
@@ -405,6 +413,8 @@ class Quiz:
 
         answer = eval(question)
         self.var_correct_ans.set(answer)
+        self.var_question.set(display_question)
+
 
          # print question for testing
         # print("{} {}".format(display_question, answer))
@@ -415,6 +425,8 @@ class Quiz:
         self.next_button.config(state=DISABLED)
 
         score = self.score.get()
+
+        question = self.var_question.get()
 
         var_new_question_num = self.var_ques_number.get()
 
@@ -445,8 +457,10 @@ class Quiz:
                 self.submit_button.config(state=DISABLED)
                 self.question_answer_entry.config(bg=answer_wrong)
                 self.amount_error_label.config(fg=answer_wrong_text)
-                round_results = "Incorrect | You entered:{} | The Correct Answer is:{} | Score:{} \n".format\
-                    (user_answer, actual_answer ,score)
+                round_results = "Incorrect | {} | You entered:{} | The Correct Answer is:{} | Score:{} / {}".format\
+                    (question, user_answer, actual_answer ,score, question_num)
+                score = score
+                self.round_results_list.append(round_results)
 
             elif user_answer == "":
                 answer_correct = "no"
@@ -464,7 +478,8 @@ class Quiz:
                 self.submit_button.config(state=DISABLED)
                 self.amount_error_label.config(fg=answer_right)
                 self.question_answer_entry.config(bg=answer_right)
-                round_results = "Correct | You entered:{} | Score:{}\n".format(user_answer, score)
+                round_results = "Correct | {} | You entered:{} | Score:{} / {}".format(question, user_answer, score,
+                                                                                       question_num)
                 score = score + 1
                 self.round_results_list.append(round_results)
 
@@ -481,7 +496,7 @@ class Quiz:
             self.next_button.config(state=DISABLED)
             self.submit_button.config(state=DISABLED)
         self.score.set(score)
-        self.quiz_results_list[0] = score
+        # self.quiz_results_list[0] = score
         # selected_questions = self.quiz_results_list[1]
 
     # setting up for the help button
@@ -493,12 +508,14 @@ class Quiz:
         root.destroy()
 
     # Going to the stats function
-    def to_stats(self):
-        QuizStats(self)
+    def to_stats(self, round_results, quiz_results):
+        QuizStats(self, round_results, quiz_results)
 
 
 class QuizStats:
-    def __init__(self, partner):
+    def __init__(self, partner, round_results, quiz_results):
+
+        print(round_results)
 
         heading = " Arial 12 bold"
         content = "Arial 12"
@@ -518,7 +535,7 @@ class QuizStats:
                                    font="arial 19 bold")
         self.stats_heading.grid(row=0)
 
-        self.export_instructions = Label(self.stats_frame,
+        self.stats_instructions = Label(self.stats_frame,
                                          text="Here are your Game Statistics."
                                               "Please use the Export button to "
                                               "access the results of each "
@@ -526,15 +543,23 @@ class QuizStats:
                                          font="arial 10 italic",
                                          justify=LEFT, fg="green",
                                          padx=10, pady=10)
-        self.export_instructions.grid(row=1)
+        self.stats_instructions.grid(row=1)
 
         # Frame for the Stats (Row 2)
         self.details_frame = Frame(self.stats_frame)
         self.details_frame.grid(row=2)
 
+        self.score_label = Label(self.details_frame,
+                                 text="Score: {}".format(quiz_results[1]), font=heading,
+                                 anchor="e")
+        self.score_label.grid(row=0, column=1, padx=1)
+
     def close_stats(self, partner):
         partner.stats_button.config(state=NORMAL)
         self.quiz_stats_box.destroy()
+
+    def to_quit(self):
+        root.destroy()
 
 
 class Help:
