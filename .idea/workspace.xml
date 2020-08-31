@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="15ab5f19-d36e-496d-87b0-e3ef2c367f82" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/Compiled_Math_Quiz.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Math_export_V1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Math_Question_generation_V2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Math_Stats_V1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Math_Stats_V1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,17 +50,19 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../02_Mystery_Box" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Zane\Documents\1 Roan School Work\Computer Science\03_Math_Quiz" />
       <recent name="H:\Documents\2020\COM301\01_Programming\03_Math_Quiz" />
       <recent name="H:\Documents\2020\COM301\01_Programming\03_Math_quiz" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Math_Stats_V1">
+  <component name="RunManager" selected="Python.Compiled_Math_Quiz">
     <configuration default="true" type="tests" factoryName="Attests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -59,7 +82,7 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <configuration name="Math_Question_generation_V2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Compiled_Math_Quiz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="03_Math_quiz" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -71,7 +94,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Question_generation_V2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Compiled_Math_Quiz.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -80,7 +103,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Math_Quiz_Help_GUI_V1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Math_Quiz_Main_v1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="03_Math_quiz" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -92,7 +115,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Quiz_Help_GUI_V1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Quiz_Main_v1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -101,7 +124,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Math_Quiz_V1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Math_Start_GUI_V2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="03_Math_quiz" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -113,7 +136,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Quiz_V1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Start_GUI_V2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -122,7 +145,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Math_Stats_V1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Math_Start_GUI_v1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="03_Math_quiz" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -134,7 +157,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Stats_V1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Start_GUI_v1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -143,7 +166,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Test_game" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Math_export_V1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="03_Math_quiz" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -155,7 +178,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test_game.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_export_V1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -165,19 +188,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Math_Quiz_Help_GUI_V1" />
-      <item itemvalue="Python.Math_Quiz_V1" />
-      <item itemvalue="Python.Math_Question_generation_V2" />
-      <item itemvalue="Python.Math_Stats_V1" />
-      <item itemvalue="Python.Test_game" />
+      <item itemvalue="Python.Math_export_V1" />
+      <item itemvalue="Python.Math_Start_GUI_v1" />
+      <item itemvalue="Python.Math_Start_GUI_V2" />
+      <item itemvalue="Python.Math_Quiz_Main_v1" />
+      <item itemvalue="Python.Compiled_Math_Quiz" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Math_Stats_V1" />
-        <item itemvalue="Python.Test_game" />
-        <item itemvalue="Python.Math_Question_generation_V2" />
-        <item itemvalue="Python.Math_Quiz_V1" />
-        <item itemvalue="Python.Math_Quiz_Help_GUI_V1" />
+        <item itemvalue="Python.Compiled_Math_Quiz" />
+        <item itemvalue="Python.Math_export_V1" />
+        <item itemvalue="Python.Math_Quiz_Main_v1" />
+        <item itemvalue="Python.Math_Start_GUI_V2" />
+        <item itemvalue="Python.Math_Start_GUI_v1" />
       </list>
     </recent_temporary>
   </component>
@@ -194,6 +217,18 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
@@ -203,25 +238,45 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1598226541837">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1598678717712">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598226541837" />
-    <state width="936" height="260" key="GridCell.Tab.0.bottom" timestamp="1598227288811">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598678717712" />
+    <state width="1899" height="255" key="GridCell.Tab.0.bottom" timestamp="1598775971560">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="936" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598227288811" />
-    <state width="936" height="260" key="GridCell.Tab.0.center" timestamp="1598227288810">
+    <state width="1920" height="270" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1598496917093">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="936" height="260" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598227288810" />
-    <state width="936" height="260" key="GridCell.Tab.0.left" timestamp="1598227288810">
+    <state width="1920" height="270" key="GridCell.Tab.0.bottom.inPresentationMode/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598496917093" />
+    <state width="1899" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598775971560" />
+    <state width="1899" height="255" key="GridCell.Tab.0.center" timestamp="1598775971560">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="936" height="260" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598227288810" />
-    <state width="936" height="260" key="GridCell.Tab.0.right" timestamp="1598227288811">
+    <state width="1920" height="270" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1598496917093">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="936" height="260" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598227288811" />
+    <state width="1920" height="270" key="GridCell.Tab.0.center.inPresentationMode/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598496917093" />
+    <state width="1899" height="255" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598775971560" />
+    <state width="1899" height="255" key="GridCell.Tab.0.left" timestamp="1598775971560">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1598496917093">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.left.inPresentationMode/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598496917093" />
+    <state width="1899" height="255" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598775971560" />
+    <state width="1899" height="255" key="GridCell.Tab.0.right" timestamp="1598775971560">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1598496917093">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.right.inPresentationMode/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598496917093" />
+    <state width="1899" height="255" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598775971560" />
+    <state x="666" y="122" width="594" height="795" key="find.popup" timestamp="1598494268531">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="666" y="122" width="594" height="795" key="find.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598494268531" />
   </component>
 </project>
