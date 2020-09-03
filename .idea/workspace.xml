@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="15ab5f19-d36e-496d-87b0-e3ef2c367f82" name="Default" comment="" />
     <ignored path="03_Math_quiz.iws" />
@@ -19,28 +37,40 @@
     <favorites_list name="03_Math_quiz" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Math_Stats_V1.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Math_Stats_V1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="454" column="50" selection-start-line="454" selection-start-column="50" selection-end-line="454" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Math_Question_generation_V2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Math_Question_generation_V2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="Compiled_Math_Quiz.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Compiled_Math_Quiz.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-1799">
+                  <caret line="181" column="64" selection-start-line="181" selection-start-column="64" selection-end-line="181" selection-end-column="64" />
+                  <folding>
+                    <element signature="e#0#21#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="Compiled_Math_Quiz.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Compiled_Math_Quiz.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="477">
+                  <caret line="393" column="48" selection-start-line="393" selection-start-column="48" selection-end-line="393" selection-end-column="48" />
+                  <folding>
+                    <element signature="e#0#21#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -55,23 +85,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Quiz_Frame_v1.py" />
-        <option value="$PROJECT_DIR$/Math_Quiz_GUI_V1.py" />
-        <option value="$PROJECT_DIR$/Math_Quiz_GUI_v1.py" />
-        <option value="$PROJECT_DIR$/Math_Quiz_GUI_V2.py" />
-        <option value="$PROJECT_DIR$/Math_Quiz_Help_GUI_V1.py" />
-        <option value="$PROJECT_DIR$/Math_Question_generation_V1.py" />
-        <option value="$PROJECT_DIR$/Math_Question_generation_V2.py" />
-        <option value="$PROJECT_DIR$/Math_Quiz_V1.py" />
-        <option value="$PROJECT_DIR$/Math_Stats_V1.py" />
+        <option value="$PROJECT_DIR$/Compiled_Math_Quiz.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
+  <component name="ProjectId" id="1gHyE6eYroageCT5OiITSXIKjKA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -98,7 +122,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -119,21 +142,28 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Zane\Documents\1 Roan School Work\Computer Science\03_Math_Quiz" />
       <recent name="H:\Documents\2020\COM301\01_Programming\03_Math_Quiz" />
       <recent name="H:\Documents\2020\COM301\01_Programming\03_Math_quiz" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Math_Stats_V1">
-    <configuration default="false" name="Math_Quiz_GUI_v1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Compiled_Math_Quiz">
+    <configuration default="false" name="Compiled_Math_Quiz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -145,12 +175,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="03_Math_quiz" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Quiz_GUI_v1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Compiled_Math_Quiz.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Math_Quiz_Help_GUI_V1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Math_Quiz_Main_v1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -162,12 +192,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="03_Math_quiz" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Quiz_Help_GUI_V1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Quiz_Main_v1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Math_Quiz_V1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Math_Start_GUI_V2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -179,12 +209,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="03_Math_quiz" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Quiz_V1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Start_GUI_V2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Math_Question_generation_V2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Math_Start_GUI_v1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -196,12 +226,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="03_Math_quiz" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Question_generation_V2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Start_GUI_v1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Math_Stats_V1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Math_export_V1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -213,7 +243,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="03_Math_quiz" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_Stats_V1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Math_export_V1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -353,24 +383,27 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.Math_Quiz_GUI_v1" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Math_Quiz_Help_GUI_V1" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Math_Quiz_V1" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Math_Question_generation_V2" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Math_Stats_V1" />
+      <item index="0" class="java.lang.String" itemvalue="Python.Compiled_Math_Quiz" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Math_Quiz_Main_v1" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Math_Start_GUI_V2" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Math_Start_GUI_v1" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Math_export_V1" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Math_Stats_V1" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Math_Quiz_V1" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Math_Question_generation_V2" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Math_Quiz_Help_GUI_V1" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Math_Quiz_GUI_v1" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Compiled_Math_Quiz" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Math_export_V1" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Math_Start_GUI_v1" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Math_Start_GUI_V2" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Math_Quiz_Main_v1" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -383,15 +416,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947807" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13072917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29669157" sideWeight="0.50417536" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30309498" sideWeight="0.49582464" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30443975" sideWeight="0.49582464" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -416,6 +449,48 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1598678717712">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598678717712" />
+    <state width="1899" height="255" key="GridCell.Tab.0.bottom" timestamp="1598775971560">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.bottom.inPresentationMode" timestamp="1598496917093">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.bottom.inPresentationMode/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598496917093" />
+    <state width="1899" height="255" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598775971560" />
+    <state width="1899" height="255" key="GridCell.Tab.0.center" timestamp="1598775971560">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.center.inPresentationMode" timestamp="1598496917093">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.center.inPresentationMode/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598496917093" />
+    <state width="1899" height="255" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598775971560" />
+    <state width="1899" height="255" key="GridCell.Tab.0.left" timestamp="1598775971560">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.left.inPresentationMode" timestamp="1598496917093">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.left.inPresentationMode/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598496917093" />
+    <state width="1899" height="255" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598775971560" />
+    <state width="1899" height="255" key="GridCell.Tab.0.right" timestamp="1598775971560">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.right.inPresentationMode" timestamp="1598496917093">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1920" height="270" key="GridCell.Tab.0.right.inPresentationMode/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598496917093" />
+    <state width="1899" height="255" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598775971560" />
+    <state x="666" y="122" width="594" height="795" key="find.popup" timestamp="1598494268531">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="666" y="122" width="594" height="795" key="find.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1598494268531" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="4" />
@@ -432,9 +507,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Math_Question_generation_V2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -449,22 +523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Math_Quiz_V1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Math_Question_generation_V2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -479,7 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -487,7 +544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -663,19 +719,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Program Files/Python35/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="2109" column="0" selection-start-line="2109" selection-start-column="0" selection-end-line="2109" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Math_Question_generation_V2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="323">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Math_Stats_V1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="454" column="50" selection-start-line="454" selection-start-column="50" selection-end-line="454" selection-end-column="50" />
-          <folding />
+        <state relative-caret-position="68">
+          <caret line="168" column="38" selection-start-line="168" selection-start-column="38" selection-end-line="168" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Compiled_Math_Quiz.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="393" column="48" selection-start-line="393" selection-start-column="48" selection-end-line="393" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
