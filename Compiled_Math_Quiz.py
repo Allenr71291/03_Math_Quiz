@@ -106,7 +106,10 @@ class Start:
         self.question_type_frame.grid(row=4)
 
         # Buttons here:
+
         # button font
+
+
         button_font = "Arial 12 bold"
 
         # Blue Multiplication question_type button
@@ -127,7 +130,11 @@ class Start:
                                        font=button_font, bg="#99FF33")
         self.addition_button.grid(row=0, column=2, pady=10)
 
+
         # help button takes you to help box
+
+        # help button
+
         self.help_button = Button(self.help_frame, text="How to Play",
                                        font=button_font, bg="#808080", fg="white",
                                        command=self.to_help)
@@ -136,6 +143,7 @@ class Start:
     def to_quiz(self, question_type):
         # Number checking function
         question_amount = self.start_amount_entry.get()
+
 
         # error colour is red and has errors starts at no
         error_back = "#ffafaf"
@@ -150,15 +158,30 @@ class Start:
             question_amount = int(question_amount)
 
             # if question is equal to or less than 0 than an error has occured
+
+        error_back = "#ffafaf"
+        has_errors = "no"
+
+        self.start_amount_entry.config(bg="white")
+        self.amount_error_label.config(text="")
+
+        try:
+            question_amount = int(question_amount)
+
+
             if question_amount <= 0:
                 has_errors = "yes"
                 error_feedback = "Sorry, the smallest amount of " \
                                  "questions you can play with is 1"
+
             # if the number of questions is more than 50 than an error has occured
+
+
             elif question_amount > 50:
                 has_errors = "yes"
                 error_feedback = "You cannot play with more than 50 " \
                                  "Questions!"
+
 
             # if number of questions is  equal to or more than 1 then
             # set that number as the number of questions
@@ -166,14 +189,23 @@ class Start:
                 self.number_questions.set(question_amount)
 
         # if the number is a decimal than an error has occured
+
+            elif question_amount >= 1:
+                self.number_questions.set(question_amount)
+
+
         except ValueError:
             has_errors = "yes"
             error_feedback = "Please enter a whole number(no text / decimals)"
 
+
         # if an error has occured then display what the error is in the error label section
+
+
         if has_errors == "yes":
             self.start_amount_entry.config(bg=error_back)
             self.amount_error_label.config(text=error_feedback)
+
 
         # if no errors then continue on with checking the other numbers
         else:
@@ -194,16 +226,21 @@ class Start:
                 numbers_used_low = int(numbers_used_low)
 
                 # if the low number set by the user is equal to or less than 0 than error has occured
+
                 if numbers_used_low <= 0:
                     has_errors = "yes"
                     error_feedback = "Sorry, the smallest number you " \
                                      "can play with is 1"
 
+
                 # if the high number set by the user is equal to or more than 50 then and error has occured
+
+
                 elif numbers_used_low > 50:
                     has_errors = "yes"
                     error_feedback = "You cannot play with numbers " \
                                      "over 50!"
+
 
                 # if the number is more than or equal to one then add set the users number
                 # as the number_used_low
@@ -211,16 +248,25 @@ class Start:
                     self.numbers_used_low.set(numbers_used_low)
 
             # if a decimal is entered then error has occured
+
+                elif numbers_used_low >= 1:
+                    self.numbers_used_low.set(numbers_used_low)
+
+
             except ValueError:
                 has_errors = "yes"
                 error_feedback = "Please enter a whole number(no text / decimals)"
 
+
             # if an error has occured then display error otherwise continue
+
+
             if has_errors == "yes":
                 self.start_amount_entry.config(bg=error_back)
                 self.amount_error_label.config(text=error_feedback)
 
             else:
+
 
                 # get the high number entered by the user
                 numbers_used_high = self.numbers_used_entry_high.get()
@@ -238,14 +284,31 @@ class Start:
                     numbers_used_high = int(numbers_used_high)
 
                     # if question is equal to or less than 0 than an error has occured
+
+                numbers_used_high = self.numbers_used_entry_high.get()
+
+                error_back = "#ffafaf"
+                has_errors = "no"
+
+                self.start_amount_entry.config(bg="white")
+                self.amount_error_label.config(text="")
+
+                try:
+                    numbers_used_high = int(numbers_used_high)
+
+
                     if numbers_used_high <= 0:
                         has_errors = "yes"
                         error_feedback = "Sorry, the smallest amount of " \
                                          "questions you can play with is 1"
+
                     # if the number of questions is more than 50 than an error has occured
+
+
                     elif numbers_used_high > 50:
                         has_errors = "yes"
                         error_feedback = "You cannot use numbers over 50! "
+
 
                     # if number of questions is  equal to or more than 1 then
                     # set that number as the number of questions
@@ -254,23 +317,37 @@ class Start:
 
                     # if the number entered in the high label is higher than the number entered in the
                     # low entry box then an error has occured
+
+                    elif numbers_used_high >= 1:
+                        self.numbers_used_high.set(numbers_used_high)
+
+
                     elif numbers_used_high <= numbers_used_low:
                         has_errors = "yes"
                         error_feedback = " Your right hand number cannot be " \
                                          "larger than your left hand number!"
 
+
                 # if the number is a decimal than an error has occured
+
+
                 except ValueError:
                     has_errors = "yes"
                     error_feedback = "Please enter a whole number(no text / decimals)"
 
+
                 # if an error has occured then display what the error is in the error label section
+
+
                 if has_errors == "yes":
                     self.start_amount_entry.config(bg=error_back)
                     self.amount_error_label.config(text=error_feedback)
 
+
                 # if no errors then set the number of questions, get the amount of questions, the low number,
                 # and the high number then carry them through into the main quiz section.
+
+
                 else:
 
                     # code for starting game:
@@ -280,13 +357,19 @@ class Start:
                     numbers_used_low = self.numbers_used_low.get()
                     numbers_used_high = self.numbers_used_high.get()
 
+
                     # start the main quiz
+
+
                     Quiz(self, question_type, question_amount, numbers_used_low, numbers_used_high)
 
                     # hide start up menu
                     root.withdraw()
 
+
     # for opening the help box
+
+
     def to_help(self):
         get_help = Help(self)
 
@@ -294,6 +377,7 @@ class Start:
 class Quiz:
     def __init__(self, partner, question_type, question_amount, numbers_used_low,
                  numbers_used_high):
+
 
         # set quiz results as the question amount retrieved from the start class
         self.quiz_results_list = [question_amount, 0]
@@ -309,6 +393,19 @@ class Quiz:
         self.var_high.set(numbers_used_high)
 
         # importing numbers inputted by the user for generating questions
+
+        self.quiz_results_list = [question_amount, 0]
+        self.round_results_list = []
+
+        # importing numbers inputed by the user for generating questions
+        self.var_low = IntVar()
+        self.var_low.set(numbers_used_low)
+
+        self.var_high = IntVar()
+        self.var_high.set(numbers_used_high)
+
+        # importing numbers inputed by the user for generating questions
+
         self.var_question_number = IntVar()
         self.var_question_number.set(question_amount)
 
@@ -366,7 +463,11 @@ class Quiz:
                                             padx=10, pady=10,)
         self.math_instructions.grid(row=1)
 
+
         # question number title
+
+        # question number
+
         self.question_number_label = Label(self.quiz_frame,
                                           text="Question 1",
                                           font=("Arial", "12", "bold"),
@@ -391,7 +492,10 @@ class Quiz:
         self.amount_error_label.grid(row=3, columnspan=2, pady=5)
 
         # Buttons here:
+
         # button to arial 12 and making it bold.
+
+
         button_font = "Arial 12 bold"
 
         # Submit answer button
@@ -726,12 +830,20 @@ class Export:
         self.save_button = Button(self.save_cancel_frame, text="Save",
                                   font="Arial 15 bold", bg="#003366", fg="white",
                                   command=partial(lambda: self.save_history(partner, quiz_results , round_results)))
+
         self.save_button.grid(row=0, column=1)
+
+        self.save_button.grid(row=0, column=0)
+
 
         self.cancel_button = Button(self.save_cancel_frame, text="Cancel",
                                     font="Arial 15 bold", bg="#660000", fg="white",
                                     command=partial(lambda: self.close_export(partner)))
+
         self.cancel_button.grid(row=0, column=0)
+
+        self.cancel_button.grid(row=0, column=1)
+
 
     def save_history(self, partner, quiz_results, round_results):
 
