@@ -157,17 +157,17 @@ class Start:
         try:
             question_amount = int(question_amount)
 
-            # if question is equal to or less than 0 than an error has occured
+            # if question is equal to or less than 0 than an error has
+            #  occured
 
-        error_back = "#ffafaf"
-        has_errors = "no"
+            error_back = "#ffafaf"
+            has_errors = "no"
 
-        self.start_amount_entry.config(bg="white")
-        self.amount_error_label.config(text="")
+            self.start_amount_entry.config(bg="white")
+            self.amount_error_label.config(text="")
 
         try:
             question_amount = int(question_amount)
-
 
             if question_amount <= 0:
                 has_errors = "yes"
@@ -175,13 +175,10 @@ class Start:
                                  "questions you can play with is 1"
 
             # if the number of questions is more than 50 than an error has occured
-
-
             elif question_amount > 50:
                 has_errors = "yes"
                 error_feedback = "You cannot play with more than 50 " \
                                  "Questions!"
-
 
             # if number of questions is  equal to or more than 1 then
             # set that number as the number of questions
@@ -189,19 +186,14 @@ class Start:
                 self.number_questions.set(question_amount)
 
         # if the number is a decimal than an error has occured
-
             elif question_amount >= 1:
                 self.number_questions.set(question_amount)
-
 
         except ValueError:
             has_errors = "yes"
             error_feedback = "Please enter a whole number(no text / decimals)"
 
-
         # if an error has occured then display what the error is in the error label section
-
-
         if has_errors == "yes":
             self.start_amount_entry.config(bg=error_back)
             self.amount_error_label.config(text=error_feedback)
@@ -226,16 +218,12 @@ class Start:
                 numbers_used_low = int(numbers_used_low)
 
                 # if the low number set by the user is equal to or less than 0 than error has occured
-
                 if numbers_used_low <= 0:
                     has_errors = "yes"
                     error_feedback = "Sorry, the smallest number you " \
                                      "can play with is 1"
 
-
                 # if the high number set by the user is equal to or more than 50 then and error has occured
-
-
                 elif numbers_used_low > 50:
                     has_errors = "yes"
                     error_feedback = "You cannot play with numbers " \
@@ -248,7 +236,6 @@ class Start:
                     self.numbers_used_low.set(numbers_used_low)
 
             # if a decimal is entered then error has occured
-
                 elif numbers_used_low >= 1:
                     self.numbers_used_low.set(numbers_used_low)
 
@@ -259,14 +246,11 @@ class Start:
 
 
             # if an error has occured then display error otherwise continue
-
-
             if has_errors == "yes":
                 self.start_amount_entry.config(bg=error_back)
                 self.amount_error_label.config(text=error_feedback)
 
             else:
-
 
                 # get the high number entered by the user
                 numbers_used_high = self.numbers_used_entry_high.get()
@@ -284,7 +268,6 @@ class Start:
                     numbers_used_high = int(numbers_used_high)
 
                     # if question is equal to or less than 0 than an error has occured
-
                 numbers_used_high = self.numbers_used_entry_high.get()
 
                 error_back = "#ffafaf"
@@ -296,15 +279,12 @@ class Start:
                 try:
                     numbers_used_high = int(numbers_used_high)
 
-
                     if numbers_used_high <= 0:
                         has_errors = "yes"
                         error_feedback = "Sorry, the smallest amount of " \
                                          "questions you can play with is 1"
 
                     # if the number of questions is more than 50 than an error has occured
-
-
                     elif numbers_used_high > 50:
                         has_errors = "yes"
                         error_feedback = "You cannot use numbers over 50! "
@@ -327,27 +307,18 @@ class Start:
                         error_feedback = " Your right hand number cannot be " \
                                          "larger than your left hand number!"
 
-
                 # if the number is a decimal than an error has occured
-
-
                 except ValueError:
                     has_errors = "yes"
                     error_feedback = "Please enter a whole number(no text / decimals)"
 
-
                 # if an error has occured then display what the error is in the error label section
-
-
                 if has_errors == "yes":
                     self.start_amount_entry.config(bg=error_back)
                     self.amount_error_label.config(text=error_feedback)
 
-
                 # if no errors then set the number of questions, get the amount of questions, the low number,
                 # and the high number then carry them through into the main quiz section.
-
-
                 else:
 
                     # code for starting game:
@@ -359,17 +330,12 @@ class Start:
 
 
                     # start the main quiz
-
-
                     Quiz(self, question_type, question_amount, numbers_used_low, numbers_used_high)
-
                     # hide start up menu
                     root.withdraw()
 
 
     # for opening the help box
-
-
     def to_help(self):
         get_help = Help(self)
 
@@ -378,10 +344,9 @@ class Quiz:
     def __init__(self, partner, question_type, question_amount, numbers_used_low,
                  numbers_used_high):
 
-
         # set quiz results as the question amount retrieved from the start class
         self.quiz_results_list = [question_amount, 0]
-        # sewt round results to blank ready to have data inputted.
+        # set round results to blank ready to have data inputted.
         self.round_results_list = []
 
         # importing low number set by user for generating questions
@@ -463,11 +428,7 @@ class Quiz:
                                             padx=10, pady=10,)
         self.math_instructions.grid(row=1)
 
-
         # question number title
-
-        # question number
-
         self.question_number_label = Label(self.quiz_frame,
                                           text="Question 1",
                                           font=("Arial", "12", "bold"),
@@ -494,8 +455,6 @@ class Quiz:
         # Buttons here:
 
         # button to arial 12 and making it bold.
-
-
         button_font = "Arial 12 bold"
 
         # Submit answer button
@@ -546,7 +505,7 @@ class Quiz:
         question_num_text = "Question {}".format(var_new_question_num)
         self.question_number_label.config(text=question_num_text)
 
-        # reactivating the submit answer button
+        # reactivating the submit answer button so user can continue
         self.submit_button.config(state=NORMAL)
 
         low_num = self.var_low.get()
@@ -559,7 +518,7 @@ class Quiz:
         var_new_question_num += 1
         self.var_ques_number.set(var_new_question_num)
 
-        # getting the type of question
+        # getting the type of question set by user
         operator = self.var_operation.get()
 
         # if the operator is * set it as a more recognisable symbol(×)
@@ -587,11 +546,8 @@ class Quiz:
 
         # collecting the different variables required for checking the answers
         score = self.score.get()
-
         question = self.var_question.get()
-
         var_new_question_num = self.var_ques_number.get()
-
         question_num = self.var_question_number.get()
 
         # dark red for incorrect answer
@@ -634,7 +590,9 @@ class Quiz:
                 self.question_answer_entry.config(bg=answer_wrong)
                 self.amount_error_label.config(fg=answer_wrong_text)
 
-            # if answer is correct then add 1 point to score and add the
+            # if answer is correct then add 1 point to score and add
+            # the the question, user answer, score, and the question number to the round results for exporting
+            # also disable the submit button and  re-enable the next question button
             else:
                 answer_check = "Well Done that is the " \
                                "correct answer! Click next to " \
@@ -649,12 +607,14 @@ class Quiz:
                 self.round_results_list.append(round_results)
                 self.quiz_results_list[1] = score
 
+        # if  the users answer is a decimal or has text in it than an error has occured
         except ValueError:
             answer_check= "Please enter a whole number (no text / decimals)"
 
             self.question_answer_entry.config(bg=answer_wrong)
         self.amount_error_label.config(text=answer_check)
 
+        # when the user has completed the amount of questions they wanted then end the quiz
         if var_new_question_num == question_num+1:
             self.amount_error_label.config(text="You have completed the amount"
                                                 " of questions you set! click"
@@ -679,18 +639,20 @@ class Quiz:
 class QuizStats:
     def __init__(self, partner, round_results, quiz_results,):
 
+        # disabling the stats button so it cannot be spammed
         partner.stats_btn.config(state=DISABLED)
 
+        # setting up the font and size of text for both the content and the heading
         heading = " Arial 12 bold"
         content = "Arial 12"
 
         self.quiz_stats_box = Toplevel()
 
         # If users press cross at top, closes help and 'releases' help button
-
         self.quiz_stats_box.protocol('WM_DELETE_WINDOW', partial(self.close_stats,
                                                                  partner))
 
+        # setting up the stats frame for all the content
         self.stats_frame = Frame(self.quiz_stats_box)
         self.stats_frame.grid()
 
@@ -699,6 +661,7 @@ class QuizStats:
                                    font="arial 19 bold")
         self.stats_heading.grid(row=0)
 
+        # instructions for the user on how to use the game stats correctly
         self.stats_instructions = Label(self.stats_frame,
                                          text="Here are your Game Statistics."
                                               "Please use the Export button to "
@@ -713,63 +676,75 @@ class QuizStats:
         self.details_frame = Frame(self.stats_frame)
         self.details_frame.grid(row=2)
 
+        # the label displaying the number of questions label
         self.num_question_label = Label(self.details_frame,
                                         text="Number of Questions: ",
                                         font=heading, anchor="e")
         self.num_question_label.grid(row=0, column=0, padx=1)
 
+        # displaying the percent of correct anwsers from the quiz
         self.percent_label = Label(self.details_frame, font=content,
                                    text="{}"
                                    .format(quiz_results[0]), anchor="w")
         self.percent_label.grid(row=0, column=1, padx=0)
 
+        # label displaying the correct answers
         self.correct_label = Label(self.details_frame,
                                    text="Correct Answers: ", font=heading,
                                    anchor="e")
         self.correct_label.grid(row=1, column=0, padx=1)
 
+        # displaying the number of incorrect answers from the quiz
         self.correct_label = Label(self.details_frame, font=content,
                                        text="{}"
                                        .format(quiz_results[1]), fg="#27FD36", anchor="w")
         self.correct_label.grid(row=1, column=1, padx=0)
 
+        # label displaying the correct answers
         self.incorrect_label = Label(self.details_frame, font=heading,
                                        text="Incorrect Answers:", anchor="e")
         self.incorrect_label.grid(row=2, column=0, padx=0)
 
+        # displaying the number of incorrect answers from the quiz
         self.incorrect_label = Label(self.details_frame, font=content,
                                        text="{}"
                                        .format(quiz_results[0]-quiz_results[1]), fg="#FA2828", anchor="w")
         self.incorrect_label.grid(row=2, column=1, padx=0)
 
+        # displaying the percent of correct anwsers from the quiz
         self.percent_label = Label(self.details_frame,
                                     text="Percent of questions correct: ",
                                     font=heading, anchor="e")
         self.percent_label.grid(row=3, column=0, padx=1)
 
+        # presenting the percent of correct answers
         self.percent_label = Label(self.details_frame, font=content,
                                      text="{:.1f}%"
                                      .format((quiz_results[1] / quiz_results[0])* 100), anchor="w")
         self.percent_label.grid(row=3, column=1, padx=0)
 
-        # Dismiss Button (Row 4)
+        # Dismiss Button (Row 4) using the stats frame
         self.dismiss_export = Frame(self.stats_frame)
         self.dismiss_export.grid(row=4)
 
+        # dismiss button that closes stats and takes user back to main quiz
         self.dismiss_btn = Button(self.dismiss_export, text="Dismiss", fg="white",
                                   bg="#660000", font="Arial 15 bold", width=7,
                                   command=partial(self.close_stats, partner))
         self.dismiss_btn.grid(row=6, column=0, pady=10, padx=5)
 
+        # export button that redirects user to exporting their results
         self.export_btn = Button(self.dismiss_export, text="Export", fg="white",
                                  bg="#003366", font="Arial 15 bold", width=7,
                                  command=lambda: self.to_export(quiz_results, round_results))
         self.export_btn.grid(row=6, column=1, pady=10, padx=5)
 
+    # for closing stats
     def close_stats(self, partner):
         partner.stats_btn.config(state=NORMAL)
         self.quiz_stats_box.destroy()
 
+    # for taking user to export function
     def to_export(self, quiz_results, round_results):
         Export(self, quiz_results, round_results)
 
@@ -777,10 +752,10 @@ class QuizStats:
 class Export:
     def __init__(self, partner, quiz_results, round_results):
 
-        # disable export button
+        # disable export button so it cant be spammed
         partner.export_btn.config(state=DISABLED)
 
-        # Sets up child window (ie: export box)
+        # Sets up child window
         self.export_box = Toplevel()
 
         # if users press cross at top, closes export and 'releases' export button
@@ -806,7 +781,7 @@ class Export:
                                  justify=LEFT, width=40, wrap=250)
         self.export_text.grid(row=1)
 
-        # Warning Text Instructions (label, row 1)
+        # export Text Instructions (label, row 1)
         self.export_text = Label(self.stats_frame, text="If the filename you "
                                                          "enter below already "
                                                          "exists, its contents "
@@ -816,13 +791,16 @@ class Export:
                                  font="Arial 10 italic", wrap=225, padx=10, pady=10)
         self.export_text.grid(row=2, pady=10)
 
+        # entry box for the filename
         self.filename_entry = Entry(self.stats_frame, width=20,
                                     font="Arial 14 bold", justify=CENTER)
         self.filename_entry.grid(row=3, pady=10)
 
+        # error label if there is an error with the file name
         self.save_error_label = Label(self.stats_frame, text="")
         self.save_error_label.grid(row=5, pady=10)
 
+        # frame for the save and cancel button
         self.save_cancel_frame = Frame(self.stats_frame)
         self.save_cancel_frame.grid(row=4)
 
@@ -830,29 +808,27 @@ class Export:
         self.save_button = Button(self.save_cancel_frame, text="Save",
                                   font="Arial 15 bold", bg="#003366", fg="white",
                                   command=partial(lambda: self.save_history(partner, quiz_results , round_results)))
-
         self.save_button.grid(row=0, column=1)
 
-        self.save_button.grid(row=0, column=0)
-
-
+        # cancel button (row 0 column 1)
         self.cancel_button = Button(self.save_cancel_frame, text="Cancel",
                                     font="Arial 15 bold", bg="#660000", fg="white",
                                     command=partial(lambda: self.close_export(partner)))
-
         self.cancel_button.grid(row=0, column=0)
 
-        self.cancel_button.grid(row=0, column=1)
-
-
+    # save file function
     def save_history(self, partner, quiz_results, round_results):
 
+        # set it so there is no errors and the old valid entrys are the alphabet and numbers.
         valid_char = "[A-Za-z0-9_]"
         has_error = "no"
         problem = ""
 
+        # retireives the file name
         filename = self.filename_entry.get()
 
+        # checks each letter that it is not a . and has no spaces.
+        # for no error is found then the file is saved
         for letter in filename:
             if re.match(valid_char, letter):
                 continue
@@ -888,7 +864,8 @@ class Export:
             # Heading for stats
             f.write("Game Statistics\n\n")
 
-            # Game stats
+            # write out the same data displayed on game stats: number of questions, correct answers, incorrect answers,
+            # percentage of correct answers.
             f.write("Number of Questions : {} \n".format(quiz_results[0]))
             f.write("Correct Answers : {} \n".format(quiz_results[1]))
             f.write("Incorrect Answers : {} \n".format(quiz_results[1] - quiz_results[0]))
@@ -897,12 +874,12 @@ class Export:
             # heading for rounds
             f.write("\nRound Details\n")
 
-            # writing in the questions as well as the user answer adn the correct answer
+            # writing in the questions as well as the user answer and the correct answer
             for question in round_results:
                 f.write(question + "\n")
-
             f.close()
 
+        #closes the export window after file is saved
         self.close_export(partner)
 
     # for closing export class
