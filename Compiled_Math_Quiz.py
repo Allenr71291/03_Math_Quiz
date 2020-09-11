@@ -153,19 +153,6 @@ class Start:
         self.start_amount_entry.config(bg="white")
         self.amount_error_label.config(text="")
 
-        # change the amount of questions to an interger then check to see if it meets the requirements.
-        try:
-            question_amount = int(question_amount)
-
-            # if question is equal to or less than 0 than an error has
-            #  occured
-
-            error_back = "#ffafaf"
-            has_errors = "no"
-
-            self.start_amount_entry.config(bg="white")
-            self.amount_error_label.config(text="")
-
         try:
             question_amount = int(question_amount)
 
@@ -185,7 +172,7 @@ class Start:
             elif question_amount >= 1:
                 self.number_questions.set(question_amount)
 
-        # if the number is a decimal than an error has occured
+            # if the number is a decimal than an error has occured
             elif question_amount >= 1:
                 self.number_questions.set(question_amount)
 
@@ -207,7 +194,6 @@ class Start:
 
             # error label is red and set errors as no to begin with
             error_back = "#ffafaf"
-            has_errors = "no"
 
             # set the entry box to white and
             self.start_amount_entry.config(bg="white")
@@ -264,10 +250,10 @@ class Start:
                 self.amount_error_label.config(text="")
 
                 # change the amount of questions to an interger then check to see if it meets the requirements.
-                try:
-                    numbers_used_high = int(numbers_used_high)
 
-                    # if question is equal to or less than 0 than an error has occured
+                numbers_used_high = int(numbers_used_high)
+
+                # if question is equal to or less than 0 than an error has occured
                 numbers_used_high = self.numbers_used_entry_high.get()
 
                 error_back = "#ffafaf"
